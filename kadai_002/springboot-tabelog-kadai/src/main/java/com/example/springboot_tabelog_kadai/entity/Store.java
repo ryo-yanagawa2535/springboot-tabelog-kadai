@@ -57,9 +57,9 @@ public class Store {
 	private String holiday;
 
 	@ManyToOne
-	@JoinColumn(name = "category_id", referencedColumnName = "id")
-	private Integer categoryId;
-
+	@JoinColumn(name = "category_id")
+	private Category category;
+	
 	@Column(name = "created_at", insertable = false, updatable = false)
 	private Timestamp createdAt;
 

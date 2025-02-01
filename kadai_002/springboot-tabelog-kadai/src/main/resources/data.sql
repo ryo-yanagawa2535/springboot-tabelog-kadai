@@ -37,14 +37,60 @@ INSERT IGNORE INTO roles (id, name) VALUES (1, 'ROLE_GENERAL');
 INSERT IGNORE INTO roles (id, name) VALUES (2, 'ROLE_ADMIN');
 
 -- usersテーブル
+INSERT IGNORE INTO users (id, name, email, password,postal_code, address, phone_number, role_id, enabled) VALUES (1, '侍 太郎', 'taro.samurai@example.com', '$2a$10$2JNjTwZBwo7fprL2X4sv.OEKqxnVtsVQvuXDkI8xVGix.U3W5B7CO', '101-0022', '東京都千代田区神田練塀町300番地', '090-1234-5678', 1, true);
+INSERT IGNORE INTO users (id, name, email, password,postal_code, address, phone_number, role_id, enabled) VALUES (2, '侍 花子', 'hanako.samurai@example.com', '$2a$10$2JNjTwZBwo7fprL2X4sv.OEKqxnVtsVQvuXDkI8xVGix.U3W5B7CO', '101-0022', '東京都千代田区神田練塀町300番地', '090-1234-5678', 2, true);
+INSERT IGNORE INTO users (id, name, email, password,postal_code, address, phone_number, role_id, enabled) VALUES (3, '侍 義勝', 'yoshikatsu.samurai@example.com', 'password', '638-0644', '奈良県五條市西吉野町湯川X-XX-XX', '090-1234-5678', 1, false);
+INSERT IGNORE INTO users (id, name, email, password,postal_code, address, phone_number, role_id, enabled) VALUES (4, '侍 幸美', 'sachimi.samurai@example.com', 'password', '342-0006', '埼玉県吉川市南広島X-XX-XX', '090-1234-5678', 1, false);
+INSERT IGNORE INTO users (id, name, email, password,postal_code, address, phone_number, role_id, enabled) VALUES (5, '侍 雅', 'miyabi.samurai@example.com', 'password', '527-0209', '滋賀県東近江市佐目町X-XX-XX', '090-1234-5678', 1, false);
+INSERT IGNORE INTO users (id, name, email, password,postal_code, address, phone_number, role_id, enabled) VALUES (6, '侍 正保', 'masayasu.samurai@example.com', 'password', '989-1203', '宮城県柴田郡大河原町旭町X-XX-XX', '090-1234-5678', 1, false);
+INSERT IGNORE INTO users (id, name, email, password,postal_code, address, phone_number, role_id, enabled) VALUES (7, '侍 真由美', 'mayumi.samurai@example.com', 'password', '951-8015', '新潟県新潟市松岡町X-XX-XX', '090-1234-5678', 1, false);
+INSERT IGNORE INTO users (id, name, email, password,postal_code, address, phone_number, role_id, enabled) VALUES (8, '侍 安民', 'yasutami.samurai@example.com', 'password', '241-0033', '神奈川県横浜市旭区今川町X-XX-XX', '090-1234-5678', 1, false);
+INSERT IGNORE INTO users (id, name, email, password,postal_code, address, phone_number, role_id, enabled) VALUES (9, '侍 章緒', 'akio.samurai@example.com', 'password', '739-2103', '広島県東広島市高屋町宮領X-XX-XX', '090-1234-5678', 1, false);
+INSERT IGNORE INTO users (id, name, email, password,postal_code, address, phone_number, role_id, enabled) VALUES (10, '侍 祐子', 'yuko.samurai@example.com', 'password', '601-0761', '京都府南丹市美山町高野X-XX-XX', '090-1234-5678', 1, false);
 
 -- reservationsテーブル
+INSERT IGNORE INTO reservations (id, user_id, store_id, reservation_day, number_of_people) VALUES (1, 1, 1, '2023-04-01', 2);
+INSERT IGNORE INTO reservations (id, user_id, store_id, reservation_day, number_of_people) VALUES (2, 1, 2, '2023-04-01', 3);
+INSERT IGNORE INTO reservations (id, user_id, store_id, reservation_day, number_of_people) VALUES (3, 1, 3, '2023-04-01', 4);
+INSERT IGNORE INTO reservations (id, user_id, store_id, reservation_day, number_of_people) VALUES (4, 1, 4, '2023-04-01', 5);
+INSERT IGNORE INTO reservations (id, user_id, store_id, reservation_day, number_of_people) VALUES (5, 1, 5, '2023-04-01', 2);
+INSERT IGNORE INTO reservations (id, user_id, store_id, reservation_day, number_of_people) VALUES (6, 1, 6, '2023-04-01', 3);
+INSERT IGNORE INTO reservations (id, user_id, store_id, reservation_day, number_of_people) VALUES (7, 1, 7, '2023-04-01', 4);
+INSERT IGNORE INTO reservations (id, user_id, store_id, reservation_day, number_of_people) VALUES (8, 1, 8, '2023-04-01', 5);
+INSERT IGNORE INTO reservations (id, user_id, store_id, reservation_day, number_of_people) VALUES (9, 1, 9, '2023-04-01', 2);
+INSERT IGNORE INTO reservations (id, user_id, store_id, reservation_day, number_of_people) VALUES (10, 1, 10, '2023-04-01', 3);
+INSERT IGNORE INTO reservations (id, user_id, store_id, reservation_day, number_of_people) VALUES (11, 1, 11, '2023-04-01', 4);
 
 -- reviewsテーブル
+INSERT IGNORE INTO reviews (id, user_id, store_id, score, content) VALUES (1, 1, 1, 5, 'とてもよかった');
+INSERT IGNORE INTO reviews (id, user_id, store_id, score, content) VALUES (2, 2, 1, 4, 'とてもよかった');
+INSERT IGNORE INTO reviews (id, user_id, store_id, score, content) VALUES (3, 3, 1, 5, 'とてもよかった');
+INSERT IGNORE INTO reviews (id, user_id, store_id, score, content) VALUES (4, 4, 1, 4, 'とてもよかった');
+INSERT IGNORE INTO reviews (id, user_id, store_id, score, content) VALUES (5, 5, 1, 5, 'とてもよかった');
+INSERT IGNORE INTO reviews (id, user_id, store_id, score, content) VALUES (6, 6, 1, 4, 'とてもよかった');
+INSERT IGNORE INTO reviews (id, user_id, store_id, score, content) VALUES (7, 7, 1, 3, 'イマイチだった');
+INSERT IGNORE INTO reviews (id, user_id, store_id, score, content) VALUES (8, 8, 1, 2, 'イマイチだった');
+INSERT IGNORE INTO reviews (id, user_id, store_id, score, content) VALUES (9, 9, 1, 3, 'イマイチだった');
+INSERT IGNORE INTO reviews (id, user_id, store_id, score, content) VALUES (10, 10, 1, 2, 'イマイチだった');
+INSERT IGNORE INTO reviews (id, user_id, store_id, score, content) VALUES (11, 11, 1, 3, 'イマイチだった');
+INSERT IGNORE INTO reviews (id, user_id, store_id, score, content) VALUES (12, 12, 1, 3, 'イマイチだった');
 
 -- favoritesテーブル
+INSERT IGNORE INTO favorites (id, user_id, store_id) VALUES (1, 1, 1);
+INSERT IGNORE INTO favorites (id, user_id, store_id) VALUES (2, 1, 2);
+INSERT IGNORE INTO favorites (id, user_id, store_id) VALUES (3, 1, 3);
+INSERT IGNORE INTO favorites (id, user_id, store_id) VALUES (4, 1, 4);
+INSERT IGNORE INTO favorites (id, user_id, store_id) VALUES (5, 1, 5);
+INSERT IGNORE INTO favorites (id, user_id, store_id) VALUES (6, 1, 6);
+INSERT IGNORE INTO favorites (id, user_id, store_id) VALUES (7, 1, 7);
+INSERT IGNORE INTO favorites (id, user_id, store_id) VALUES (8, 1, 8);
+INSERT IGNORE INTO favorites (id, user_id, store_id) VALUES (9, 1, 9);
+INSERT IGNORE INTO favorites (id, user_id, store_id) VALUES (10, 1, 10);
+INSERT IGNORE INTO favorites (id, user_id, store_id) VALUES (11, 1, 11);
+INSERT IGNORE INTO favorites (id, user_id, store_id) VALUES (12, 1, 12);
 
--- incテーブル
+-- incsテーブル
+INSERT IGNORE INTO incs (id, inc_name, ceo, create_day, postal_code, address, business) VALUES (1, '株式会社NagoyaEats', '田中 一郎', '2018-04-15', '141-0031', '東京都品川区西五反田2-10-2', '名古屋のグルメに特化したWEBアプリ「NagoyaEats」の企画・開発・運営。飲食店の検索・予約・口コミ機能を提供し、名古屋の食文化の魅力を全国に発信。');
 
 
 
