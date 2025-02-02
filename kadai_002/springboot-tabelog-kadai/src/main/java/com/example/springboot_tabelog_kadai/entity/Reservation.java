@@ -1,5 +1,6 @@
 package com.example.springboot_tabelog_kadai.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -28,11 +29,12 @@ public class Reservation {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
     
-    @Column(name = "store_id", nullable = false)
-    private Integer storeId;
+    @ManyToOne
+    @JoinColumn(name = "store_id")
+    private Store store;
     
     @Column(nullable = false)
-    private java.sql.Date reservationDay;
+    private LocalDate reservationDay;
     
     @Column(nullable = false)
     private Integer numberOfPeople;

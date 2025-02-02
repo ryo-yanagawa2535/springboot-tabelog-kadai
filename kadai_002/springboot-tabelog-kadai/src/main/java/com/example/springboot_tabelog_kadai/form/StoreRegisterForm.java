@@ -7,7 +7,6 @@ import org.springframework.web.multipart.MultipartFile;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
 
 public class StoreRegisterForm {
 	@NotBlank(message = "店舗名を入力してください。")
@@ -46,5 +45,57 @@ public class StoreRegisterForm {
 
 	@NotNull(message = "カテゴリーを選択してください。")
 	private Integer categoryId;
+
+	public MultipartFile getImageFile() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+
+
+	public String getDescription() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+	public String getName() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+
+
+	public Integer getPriceMax() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+
+
+	public Integer getPriceMin() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+
+
+	public String getPostalCode() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+
+
+	public String getAddress() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+
+
+	public String getPhoneNumber() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
 	
 }

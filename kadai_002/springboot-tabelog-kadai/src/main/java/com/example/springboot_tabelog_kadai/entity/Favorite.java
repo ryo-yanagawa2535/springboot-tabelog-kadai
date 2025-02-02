@@ -28,8 +28,9 @@ public class Favorite {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
     
-    @Column(name = "store_id", nullable = false)
-    private Integer storeId;
+    @ManyToOne
+    @JoinColumn(name = "store_id")
+    private Store store;
     
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
