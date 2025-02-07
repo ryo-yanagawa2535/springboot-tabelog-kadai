@@ -15,5 +15,4 @@ public class ReservationRegisterForm {
     private Date reservationDay;        
     
     private Integer numberOfPeople;
-    
 }

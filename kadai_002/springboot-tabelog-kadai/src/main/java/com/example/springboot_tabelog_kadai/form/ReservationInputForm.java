@@ -1,5 +1,7 @@
 package com.example.springboot_tabelog_kadai.form;
 
+import java.time.LocalDate;
+
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -18,12 +20,8 @@ public class ReservationInputForm {
     @Min(value = 1, message = "人数は1人以上に設定してください。")
     private Integer numberOfPeople;
     
-    public String getReservationDate() {
-        return reservationDate;
+    public LocalDate getReservationDay() {
+        return getReservationDay();
     }
-    
-    public String getReservationTime() {
-        return reservationTime;
-    }
-    
+       
 }

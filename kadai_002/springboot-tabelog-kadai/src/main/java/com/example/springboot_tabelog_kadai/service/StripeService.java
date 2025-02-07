@@ -3,6 +3,10 @@
 //import org.springframework.beans.factory.annotation.Value;
 //import org.springframework.stereotype.Service;
 //
+//import com.example.springboot_tabelog_kadai.form.ReservationRegisterForm;
+//
+//import jakarta.servlet.http.HttpServletRequest;
+//
 //@Service
 //public class StripeService {
 //	 @Value("${stripe.api-key}")

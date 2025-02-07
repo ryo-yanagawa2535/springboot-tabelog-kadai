@@ -2,9 +2,10 @@ package com.example.springboot_tabelog_kadai.security;
 
 import java.util.Collection;
 
-import org.apache.catalina.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.example.springboot_tabelog_kadai.entity.User;
 
 public class UserDetailsImpl implements UserDetails {
     private final User user;
@@ -15,7 +16,7 @@ public class UserDetailsImpl implements UserDetails {
         this.authorities = authorities;
     }
     
-    public User getUser() {
+    public com.example.springboot_tabelog_kadai.entity.User getUser() {
         return user;
     }
     

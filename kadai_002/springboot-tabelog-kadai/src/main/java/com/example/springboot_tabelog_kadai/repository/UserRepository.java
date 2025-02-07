@@ -6,4 +6,5 @@ import com.example.springboot_tabelog_kadai.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
     User findByEmail(String email);
+
 }

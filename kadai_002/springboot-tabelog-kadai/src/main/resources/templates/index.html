@@ -1,11 +1,150 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
-   <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1">	
+ <html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	    <head>
+         <div th:replace="~{fragment :: meta}"></div>   
+        <div th:replace="~{fragment :: styles}"></div>
        <title>NAGOYAMESHI</title>	
    </head>
-   <body>
-       <p>Hello, world!</p>
-   </body>
+ <body>
+<div class="samuraitravel-wrapper">
+             <!-- ヘッダー -->
+             <div th:replace="~{fragment :: header}"></div>
+             
+             <main>
+                 <div class="container pt-4 pb-5 samuraitravel-container">
+                     <div th:if="${param.loggedIn}" class="alert alert-info">
+                         ログインしました。
+                     </div>  
+                     
+                     <div th:if="${param.loggedOut}" class="alert alert-info">
+                         ログアウトしました。
+                     </div>
+                     
+                      <div th:if="${successMessage}" class="alert alert-info">
+                         <span th:text="${successMessage}"></span>
+                     </div>    
+                     
+                      <div class="d-flex justify-content-center">                                            
+                         <form method="get" th:action="@{/stores}" class="mb-5 samuraitravel-search-form">
+                             <div class="input-group">
+                                 <input type="text" class="form-control" name="keyword" th:value="${keyword}" placeholder="食べ物の種類・店名">
+                                 <button type="submit" class="btn text-white shadow-sm samuraitravel-btn">検索</button> 
+                             </div>               
+                         </form>                        
+                     </div>                                                                                                  
+                                                      
+                     <h2 class="text-center mb-3">新着</h2>
+                     <div class="row row-cols-lg-5 row-cols-2 g-3 mb-5">                                        
+                         <div class="col" th:each="newStore : ${newStores}">
+                             <a th:href="@{/stores/__${newStore.getId()}__}" class="link-dark samuraitravel-card-link">
+                                 <div class="card h-100">                                                                        
+                                     <img th:if="${newStore.getImageName()}" th:src="@{/storage/__${newStore.getImageName()}__}" class="card-img-top samuraitravel-vertical-card-image" alt="店舗画像">                                     
+                                     <img th:unless="${newStore.getImageName()}" th:src="@{/images/noImage.png}" class="card-img-top samuraitravel-vertical-card-image" alt="NO IMAGE">                                                                                                                        
+                                     <div class="card-body">                                    
+                                         <h3 class="card-title" th:text="${newStore.getName()}"></h3>
+                                         <p class="card-text mb-1">
+                                             <small class="text-muted" th:text="${newStore.getAddress()}"></small>                                            
+                                         </p>
+                                         <p class="card-text">
+                                             <span th:text="${#numbers.formatInteger(newStore.getPrice(), 1, 'COMMA') + '円 / 泊'}"></span>                                            
+                                         </p>                                    
+                                     </div>
+                                 </div>    
+                             </a>            
+                         </div>                                               
+                     </div>
+                     
+                     <div class="row justify-content-center">
+                         <div class="col-xl-5 col-lg-6 col-md-8">                    
+                     
+                             <h2 class="text-center mb-3">カテゴリーから探す</h2>                                        
+                              
+                             <table class="table">
+                                 <tbody>                                                     
+                                     <tr>
+                                         <th>うなぎ</th>
+                                         <td>
+                                             <a th:href="@{/stores?area=うなぎ}">うなぎ</a>
+                                             <a th:href="@{/stores?area=ひつまぶし}">ひつまぶし</a>
+                                         </td>                                     
+                                     </tr>  
+                                     <tr>
+                                         <th>味噌カツ</th>
+                                         <td>
+                                             <a th:href="@{/stores?area=味噌カツ}" class="me-2">味噌カツ</a>
+                                             <a th:href="@{/stores?area=ソースカツ}">ソースカツ</a>
+                                         </td>                                     
+                                     </tr>  
+                                     <tr>
+                                         <th>味噌煮込みうどん</th>
+                                         <td>
+                                             <a th:href="@{/stores?area=味噌煮込みうどん（太麺）}" class="me-2">味噌煮込みうどん（太麺）</a>
+                                             <a th:href="@{/stores?area=味噌煮込みうどん（細麺）}" class="me-2">味噌煮込みうどん（細麺）</a>
+                                         </td>                                     
+                                     </tr>  
+                                     <tr>
+                                         <th>どて煮</th>
+                                         <td>
+                                             <a th:href="@{/stores?area=どて煮（甘め）}" class="me-2">どて煮（甘め）</a>
+                                             <a th:href="@{/stores?area=どて煮（濃いめ）}" class="me-2">どて煮（濃いめ）</a>
+                                         </td>                                     
+                                     </tr>  
+                                     <tr>
+                                         <th>味噌おでん</th>
+                                         <td>
+                                             <a th:href="@{/stores?area=味噌おでん（薄め）}" class="me-2">味噌おでん（薄め）</a>
+                                             <a th:href="@{/stores?area=味噌おでん（濃いめ）}" class="me-2">味噌おでん（濃いめ）</a>
+                                         </td>                                     
+                                     </tr>  
+                                     <tr>
+                                         <th>手羽先</th>
+                                         <td>
+                                             <a th:href="@{/stores?area=手羽先（薄め）}" class="me-2">手羽先（薄め）</a>
+                                             <a th:href="@{/stores?area=手羽先（濃いめ）}" class="me-2">手羽先（濃いめ）</a>
+                                         </td>                                     
+                                     </tr>  
+                                     <tr>
+                                         <th>小倉トースト</th>
+                                         <td>
+                                             <a th:href="@{/stores?area=小倉トースト（こしあん）}" class="me-2">小倉トースト（こしあん）</a>
+                                             <a th:href="@{/stores?area=小倉トースト（つぶあん）}" class="me-2">小倉トースト（つぶあん）</a>
+                                         </td>                                     
+                                     </tr>  
+                                     <tr>
+                                         <th>名古屋コーチン</th>
+                                         <td>
+                                             <a th:href="@{/stores?area=親子丼}" class="me-2">親子丼</a>
+                                             <a th:href="@{/stores?area=からあげ}" class="me-2">からあげ</a>
+                                         </td>                                     
+                                     </tr>  
+                                     <tr>
+                                         <th>あんかけスパ</th>
+                                         <td>
+                                             <a th:href="@{/stores?area=あんかけスパ（薄め）}" class="me-2">あんかけスパ（薄め）</a>
+                                             <a th:href="@{/stores?area=あんかけスパ（濃いめ）}" class="me-2">あんかけスパ（濃いめ）</a>
+                                         </td>                                     
+                                     </tr>  
+                                     
+                                     <tr>
+                                         <th>中華</th>
+                                         <td>
+                                             <a th:href="@{/stores?area=町中華}">町中華</a>
+                                             <a th:href="@{/stores?area=高級中華}">高級中華</a>
+                                         </td>                                     
+                                     </tr>                                                                                                                                                                                                                                                                                                                                                                           
+                                 </tbody>
+                             </table>  
+                         </div>
+                     </div>                                         
+                 </div>
+             </main>
+             
+             <!-- フッター -->
+             <div th:replace="~{fragment :: footer}"></div>
+         </div>    
+         
+         <div th:replace="~{fragment :: scripts}"></div> 
++    </body>
 </html>
+
+   
